@@ -1,0 +1,42 @@
+@import "tailwindcss";
+@custom-variant look-v2 (&:where([data-look="v2"], [data-look="v2"] *));
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary: var(--sidebar-primary);
+}
+:root {
+  --background: #fafafa; --foreground: #111113; --card: #ffffff; --card-foreground: #111113;
+  --popover: #ffffff; --primary: #eb3514; --primary-foreground: #ffffff; --secondary: #f4f4f5;
+  --secondary-foreground: #18181b; --muted: #f4f4f5; --muted-foreground: #71717a;
+  --accent: #f4f4f5; --accent-foreground: #18181b; --destructive: #dc2626;
+  --border: #e6e6e9; --input: #e6e6e9; --ring: #eb3514;
+  --sidebar: #f7f7f8; --sidebar-foreground: #3f3f46; --sidebar-border: #e6e6e9;
+  --sidebar-accent: #ececee; --sidebar-primary: #eb3514; --radius: 0.5rem;
+  --size-control-md: 2rem; --size-control-sm: 1.75rem; --size-row: 2.5rem;
+  --size-page-gutter: 0.875rem; --size-shell-bar: 3.25rem;
+  --size-sidebar: 16rem; --size-sidebar-collapsed: 3rem; --dashboard-banner-height: 0px;
+  color-scheme: light;
+}
+@font-face { font-family: "Geist Sans"; src: url("/assets/fonts/Geist-Variable.woff2") format("woff2"); font-weight: 100 900; font-display: swap; }
+@font-face { font-family: "Geist Mono"; src: url("/assets/fonts/GeistMono-Variable.woff2") format("woff2"); font-weight: 100 900; font-display: swap; }
+body { background: var(--background); color: var(--foreground); font-family: "Geist Sans", ui-sans-serif, system-ui, sans-serif; font-size: 14px; -webkit-font-smoothing: antialiased; }
