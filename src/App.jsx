@@ -13,6 +13,15 @@ import ApiKeys from './pages/ApiKeys.jsx'
 import Webhooks from './pages/Webhooks.jsx'
 import Settings from './pages/Settings.jsx'
 
+function Stub({ title }) {
+  return (
+    <div className="flex flex-col items-center justify-center gap-2 py-24 text-center">
+      <h1 className="text-xl font-semibold">{title}</h1>
+      <p className="text-sm text-muted-foreground max-w-md">This section is part of the replica scope and is being built. Data model available (OpenAPI) — UI coming in the next iteration.</p>
+    </div>
+  )
+}
+
 const TITLES = {
   home: ['Home', '/dashboard/home'], connections: ['Connections', '/dashboard/connections'],
   'posts-all': ['Posts', '/dashboard/posts-all'], 'inbox-messages': ['Inbox', '/dashboard/inbox-messages'],
@@ -70,6 +79,14 @@ export default function App() {
             <Route path="/dashboard/api-keys" element={<ApiKeys />} />
             <Route path="/dashboard/webhooks" element={<Webhooks />} />
             <Route path="/dashboard/settings" element={<Settings />} />
+            <Route path="/dashboard/creator-campaigns" element={<Stub title="Creator campaigns" />} />
+            <Route path="/dashboard/ads-overview" element={<Stub title="Ads — Overview" />} />
+            <Route path="/dashboard/commerce-products" element={<Stub title="Commerce — Products" />} />
+            <Route path="/dashboard/whatsapp-overview" element={<Stub title="WhatsApp" />} />
+            <Route path="/dashboard/imessage-overview" element={<Stub title="iMessage" />} />
+            <Route path="/dashboard/phone-numbers-overview" element={<Stub title="Phone numbers" />} />
+            <Route path="/dashboard/users" element={<Stub title="Users" />} />
+            <Route path="/dashboard/logs" element={<Stub title="Logs" />} />
             <Route path="*" element={<Home />} />
           </Routes>
         </div>
