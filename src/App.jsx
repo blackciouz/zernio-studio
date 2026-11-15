@@ -38,7 +38,9 @@ const TITLES = {
   'analytics-posting': ['Analytics', '/dashboard/analytics-posting'], automations: ['Automations', '/dashboard/automations'],
   'api-keys': ['API Keys', '/dashboard/api-keys'], webhooks: ['Webhooks', '/dashboard/webhooks'],
   settings: ['Settings', '/dashboard/settings'],
+  docs: ['Documentation', '/docs'], creator: ['Creator campaigns', '/dashboard/creator-campaigns'],
 }
+
 
 function Topbar({ onOpenSearch, onOpenMobileSidebar }) {
   const loc = useLocation()
@@ -54,11 +56,6 @@ function Topbar({ onOpenSearch, onOpenMobileSidebar }) {
         <span className="opacity-50">/</span>
         <span className="text-foreground font-medium truncate">{TITLES[seg] ? TITLES[seg][0] : seg}</span>
       </nav>
-import Docs from './pages/Docs.jsx'
-import DocPage from './pages/DocPage.jsx'
-
-...
-
       <div className="ml-auto flex items-center gap-2">
         <Link to="/docs" className="text-sm text-muted-foreground hover:text-foreground mr-4">Docs</Link>
         <button onClick={onOpenSearch}
