@@ -49,6 +49,43 @@ export const conversations = [
   { _id: 'c_003', account: 'instagram/zernio.studio', contact: '@marc.vids', lastMessage: 'On collab sur le prochain ?', direction: 'out', at: '2026-11-14T17:20:00Z', unread: false },
 ]
 
+export const adsCampaigns = [
+  { _id: 'ad_001', name: 'Launch Q4 - Branding', spend: 4500, impressions: 120000, roas: 3.2, status: 'active', platform: 'Meta' },
+  { _id: 'ad_002', name: 'Promo - Holiday Sales', spend: 1200, impressions: 45000, roas: 4.8, status: 'paused', platform: 'TikTok' },
+]
+
+export const products = [
+  { _id: 'prod_001', name: 'Zernio Annual Pro', price: 299, stock: -1, status: 'active', platform: 'Shopify' },
+  { _id: 'prod_002', name: 'Creator Kit V1', price: 49, stock: 150, status: 'active', platform: 'WordPress' },
+]
+
+export const creators = [
+  { _id: 'cr_001', name: 'Alice Smith', platform: 'Instagram', reach: 50000, status: 'active', payout: 500 },
+  { _id: 'cr_002', name: 'Bob Jones', platform: 'TikTok', reach: 120000, status: 'paused', payout: 800 },
+]
+
+export const whatsappNumbers = [
+  { _id: 'wa_001', number: '+33 6 12 34 56 78', status: 'connected', region: 'FR' },
+]
+
+export const imessageSenders = [
+  { _id: 'im_001', account: 'zernio@icloud.com', status: 'active', renewal: '2026-12-01' },
+]
+
+export const phoneNumbers = [
+  { _id: 'ph_001', number: '+1 202 555 0199', status: 'active', country: 'US' },
+]
+
+export const teamUsers = [
+  { _id: 'u_001', name: 'John Doe', role: 'admin', status: 'active' },
+  { _id: 'u_002', name: 'Jane Smith', role: 'editor', status: 'active' },
+]
+
+export const logs = [
+  { _id: 'l_001', request: 'POST /api/v1/posts', status: 201, time: '2026-11-15T10:00:00Z' },
+  { _id: 'l_002', request: 'GET /api/v1/analytics', status: 500, time: '2026-11-15T09:59:00Z' },
+]
+
 export const platforms = [
   { name: 'Instagram', capabilities: ['Post', 'Stories', 'Analytics', 'Inbox'], icon: 'instagram' },
   { name: 'TikTok', capabilities: ['Post', 'Analytics', 'Comments'], icon: 'tiktok' },

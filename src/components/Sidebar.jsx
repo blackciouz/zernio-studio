@@ -115,10 +115,10 @@ function NavItem({ item }) {
   )
 }
 
-export default function Sidebar() {
+export default function Sidebar({ mobile = false }) {
   return (
-    <div className="group peer hidden text-sidebar-foreground lg:block" data-state="expanded" data-variant="sidebar" data-side="left">
-      <div className="fixed inset-y-0 z-10 hidden w-(--sidebar-width) lg:flex left-0 top-0 h-full border-r border-sidebar-border">
+    <div className={`group peer ${mobile ? 'block' : 'hidden'} text-sidebar-foreground lg:block`} data-state="expanded" data-variant="sidebar" data-side="left">
+      <div className={`${mobile ? 'relative' : 'fixed inset-y-0'} z-10 w-(--sidebar-width) ${mobile ? 'flex' : 'hidden lg:flex'} left-0 top-0 h-full border-r border-sidebar-border`}>
         <div data-sidebar="sidebar" className="flex h-full w-full flex-col bg-sidebar">
           <div data-sidebar="header" className="flex h-(--size-shell-bar) shrink-0 items-center gap-2 px-3 border-b border-sidebar-border">
             <span className="size-4 shrink-0 rounded-full inline-block" style={{ background: 'var(--primary)' }} />

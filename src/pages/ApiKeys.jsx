@@ -6,8 +6,21 @@ export default function ApiKeys() {
   const [list, setList] = useState(apiKeys)
   const [creating, setCreating] = useState(false)
   const [name, setName] = useState('')
+  const [scope, setScope] = useState('full')
+  const [permission, setPermission] = useState('read-write')
   const [newKey, setNewKey] = useState(null)
   const [copied, setCopied] = useState(false)
+  const [reveal, setReveal] = useState(false)
+
+  const handleCreate = () => {
+    if (!name.trim()) return
+    const k = 'sk_' + Array.from({length: 64}, () => Math.floor(Math.random()*16).toString(16)).join('')
+    setList(l => [{ _id: 'k_' + Date.now(), name, keyPreview: k.slice(0, 8) + '...' + k.slice(-4), fullKey: k, scope, permission, isActive: true, createdAt: new Date().toISOString() }, ...l])
+    setNewKey(k)
+    setReveal(true)
+    setCreating(false)
+    setName('')
+  }
 
   return (
     <div className="flex flex-col gap-4">
@@ -18,7 +31,7 @@ export default function ApiKeys() {
       <DataTable
         columns={[
           { key: 'name', label: 'Name', render: k => <span className="font-medium">{k.name}</span> },
-          { key: 'keyPreview', label: 'Key', render: k => <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">{k.keyPreview}</code> },
+          { key: 'createdAt', label: 'Created', render: k => <span className="text-muted-foreground">{k.createdAt ? new Date(k.createdAt).toLocaleDateString() : '—'}</span> },
           { key: 'scope', label: 'Scope', render: k => <span className="capitalize">{k.scope}</span> },
           { key: 'permission', label: 'Permission', render: k => <span className="capitalize text-muted-foreground">{k.permission}</span> },
           { key: 'isActive', label: 'Status', render: k => <span className={`text-xs font-medium ${k.isActive ? 'text-emerald-600' : 'text-muted-foreground'}`}>{k.isActive ? 'Active' : 'Disabled'}</span> },
@@ -39,17 +52,28 @@ export default function ApiKeys() {
       <Modal open={creating} onClose={() => setCreating(false)} title="Create API key"
         footer={<>
           <Button variant="ghost" onClick={() => setCreating(false)}>Cancel</Button>
-          <Button onClick={() => { if (!name.trim()) return; const k = 'sk_' + Math.random().toString(36).slice(2, 14) + '...' + Math.random().toString(36).slice(2, 10); setList(l => [{ _id: 'k_' + Date.now(), name, keyPreview: k, scope: 'full', permission: 'read-write', isActive: true }, ...l]); setNewKey(k); setCreating(false); setName('') }}>Create</Button>
+          <Button onClick={handleCreate}>Create</Button>
         </>}>
         <label className="block mb-1 text-xs text-muted-foreground">Name</label>
         <input value={name} onChange={e => setName(e.target.value)} placeholder="Ex: production-app"
-          className="w-full h-9 rounded-md border border-border bg-background px-3 outline-hidden focus-visible:ring-2 focus-visible:ring-ring" />
+          className="w-full h-9 rounded-md border border-border bg-background px-3 mb-4 outline-hidden focus-visible:ring-2 focus-visible:ring-ring" />
+        <label className="block mb-1 text-xs text-muted-foreground">Scope</label>
+        <select value={scope} onChange={e => setScope(e.target.value)} className="w-full h-9 rounded-md border border-border bg-background px-3 mb-4">
+            <option value="full">Full access</option>
+            <option value="specific">Specific profiles</option>
+        </select>
+        <label className="block mb-1 text-xs text-muted-foreground">Permission</label>
+        <select value={permission} onChange={e => setPermission(e.target.value)} className="w-full h-9 rounded-md border border-border bg-background px-3">
+            <option value="read-write">Read & write</option>
+            <option value="read-only">Read only</option>
+        </select>
       </Modal>
 
-      <Modal open={!!newKey} onClose={() => setNewKey(null)} title="Your new API key"
-        footer={<Button onClick={() => setNewKey(null)}>Done</Button>}>
-        <p className="mb-2 text-muted-foreground">Copy it now — it won't be shown again.</p>
-        <code className="block break-all rounded-md bg-muted p-3 font-mono text-xs">{newKey}</code>
+      <Modal open={reveal} onClose={() => setReveal(false)} title="Save your API key"
+        footer={<Button onClick={() => setReveal(false)}>Done</Button>}>
+        <p className="mb-2 text-sm text-muted-foreground">Copy it now — you won't be able to see it again.</p>
+        <code className="block break-all rounded-md bg-muted p-3 font-mono text-xs mb-4">{newKey}</code>
+        <Button onClick={() => { navigator.clipboard?.writeText(newKey); setCopied(true); setTimeout(() => setCopied(false), 1500) }}>{copied ? 'Copié ✓' : 'Copy'}</Button>
       </Modal>
     </div>
   )
