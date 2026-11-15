@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { Routes, Route, useLocation, useNavigate } from 'react-router-dom'
+import { Routes, Route, useLocation, useNavigate, Link } from 'react-router-dom'
 import Sidebar from './components/Sidebar.jsx'
 import CommandK from './components/CommandK.jsx'
+import Docs from './pages/Docs.jsx'
+import DocPage from './pages/DocPage.jsx'
 
 import Home from './pages/Home.jsx'
 import Connections from './pages/Connections.jsx'
@@ -52,8 +54,15 @@ function Topbar({ onOpenSearch, onOpenMobileSidebar }) {
         <span className="opacity-50">/</span>
         <span className="text-foreground font-medium truncate">{TITLES[seg] ? TITLES[seg][0] : seg}</span>
       </nav>
+import Docs from './pages/Docs.jsx'
+import DocPage from './pages/DocPage.jsx'
+
+...
+
       <div className="ml-auto flex items-center gap-2">
+        <Link to="/docs" className="text-sm text-muted-foreground hover:text-foreground mr-4">Docs</Link>
         <button onClick={onOpenSearch}
+
           className="flex h-8 w-8 lg:w-56 items-center gap-2 rounded-md border border-border bg-card px-2.5 text-sm text-muted-foreground hover:bg-accent">
           <svg viewBox="0 0 24 24" className="size-4" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="7" /><path d="M20 20l-3.5-3.5" /></svg>
           <span className="hidden lg:block">Search...</span>
@@ -111,6 +120,8 @@ export default function App() {
             <Route path="/dashboard/phone-numbers-overview" element={<PhoneNumbersOverview />} />
             <Route path="/dashboard/users" element={<Users />} />
             <Route path="/dashboard/logs" element={<Logs />} />
+            <Route path="/docs" element={<Docs />} />
+            <Route path="/docs/:slug" element={<DocPage />} />
             <Route path="*" element={<Home />} />
           </Routes>
         </div>

@@ -1,0 +1,5 @@
+{
+  "slug": "changelog",
+  "title": "Changelog",
+  "content": "# Changelog\n\nEvery change to the Zernio API, newest first.\n\nimport { Changelog } from '@/components/changelog';\nimport { ChangelogWeeks } from '@/components/changelog-weeks';\nimport { ChangelogViews } from '@/components/changelog-views';\n\n<ChangelogViews weekly={<ChangelogWeeks />} all={<Changelog />} />\n\nNothing here breaks a working integration:\n\n- Endpoints are versioned in the path (`/v1`).\n- A breaking change ships only as a new path version.\n- An operation is marked `deprecated: true` in the [OpenAPI spec](https://zernio.com/openapi.yaml) before it goes."
+}

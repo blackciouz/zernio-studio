@@ -1,0 +1,5 @@
+{
+  "slug": "knowledge-base",
+  "title": "Knowledge base",
+  "content": "# Knowledge base\n\nSearch every Zernio guide in one place, from connecting accounts and uploading media to webhooks, security, integrations and migrations.\n\n- Guides: Accounts, media, scheduling, errors and rate limits.\n- Webhooks: The events Zernio sends and the payload of each one.\n- Build a platform: Post, message and report on behalf of your customers.\n- AI and terminal: The MCP server and the CLI.\n- Security: SSO, SCIM and two-factor authentication.\n- Integrations: n8n, Make, Zapier and other tools.\n- Migrations: Move to Zernio from another provider."
+}

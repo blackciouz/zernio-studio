@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { PageHeader, Section, Button, DataTable } from '../components/ui.jsx'
 import { webhooks } from '../data/db.js'
+import { useToast } from '../hooks/useToast'
 
 const EVENTS = ['post.published', 'post.failed', 'post.scheduled', 'message.received', 'account.connected', 'account.disconnected']
 
@@ -8,6 +9,7 @@ export default function Webhooks() {
   const [hooks, setHooks] = useState(webhooks)
   const [sel, setSel] = useState(hooks[0]?._id)
   const cur = hooks.find(h => h._id === sel)
+  const notify = useToast()
   const toggleEvent = (ev) => {
     setHooks(l => l.map(h => h._id === sel ? { ...h, events: h.events.includes(ev) ? h.events.filter(e => e !== ev) : [...h.events, ev] } : h))
   }
@@ -15,7 +17,7 @@ export default function Webhooks() {
   return (
     <div className="flex flex-col gap-4">
       <PageHeader title="Webhooks">
-        <Button onClick={() => alert('Ajout d\'un endpoint webhook (simulation)')}>+ Add endpoint</Button>
+        <Button onClick={() => notify('Ajout d\'un endpoint webhook (simulation)')}>+ Add endpoint</Button>
       </PageHeader>
 
       <Section title="Endpoints">

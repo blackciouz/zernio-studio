@@ -2,10 +2,12 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { PageHeader, Section, DataTable, Button, StatusBadge, fmtDate } from '../components/ui.jsx'
 import { accounts, platforms } from '../data/db.js'
+import { useToast } from '../hooks/useToast'
 
 const ICONS = { instagram: 'instagram', tiktok: 'tiktok', meta: 'meta', twitter: 'x', linkedin: 'linkedin', whatsapp: 'whatsapp' }
 
 export default function Connections() {
+  const notify = useToast()
   return (
     <div className="flex flex-col gap-4">
       <PageHeader title="Connections" />
@@ -32,7 +34,7 @@ export default function Connections() {
           columns={[
             { key: 'name', label: 'Platform', render: p => <span className="font-medium">{p.name}</span> },
             { key: 'capabilities', label: 'Capabilities', render: p => <span className="text-muted-foreground">{p.capabilities.join(' · ')}</span> },
-            { key: 'connect', label: '', className: 'w-28 text-right', render: p => <Button size="sm" onClick={() => alert(`OAuth connect ${p.name} (simulation)`)}>Connect</Button> },
+            { key: 'connect', label: '', className: 'w-28 text-right', render: p => <Button size="sm" onClick={() => notify(`OAuth connect ${p.name} (simulation)`)}>Connect</Button> },
           ]}
           rows={platforms}
         />

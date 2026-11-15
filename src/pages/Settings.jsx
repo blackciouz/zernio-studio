@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { PageHeader, Section, Button } from '../components/ui.jsx'
 import { user } from '../data/db.js'
+import { useToast } from '../hooks/useToast'
 
 function Field({ label, value, onSave }) {
   const [v, setV] = useState(value)
@@ -20,6 +21,7 @@ function Field({ label, value, onSave }) {
 export default function Settings() {
   const [dark, setDark] = useState(false)
   const [prefs, setPrefs] = useState({ usageAlerts: true, postFailures: true, accountIssues: true, paymentAlerts: true, marketingEmails: false })
+  const notify = useToast()
   return (
     <div className="flex flex-col gap-4 max-w-3xl">
       <PageHeader title="Settings" />
@@ -59,7 +61,7 @@ export default function Settings() {
             <div className="text-sm font-medium">{user.planName} · {user.billingPeriod}</div>
             <div className="text-xs text-muted-foreground">First 2 connected accounts free · $6/account 3-10 · $3/account 11-100 · $1/account 101+</div>
           </div>
-          <Button variant="outline" size="sm" onClick={() => alert('Upgrade (simulation)')}>Manage billing</Button>
+          <Button variant="outline" size="sm" onClick={() => notify('Upgrade (simulation)')}>Manage billing</Button>
         </div>
       </Section>
     </div>

@@ -1,0 +1,5 @@
+{
+  "slug": "guides",
+  "title": "Guides",
+  "content": "# Guides\n\nStep-by-step guides for the jobs most integrations need, from your first profile and connected account to retries, ads tracking and commerce.\n\nEach guide covers one job end to end, with the requests in Node.js, Python and curl. Start with profiles and connecting accounts if you are new to the API.\n\n<SectionPages section=\"/guides\" />"
+}

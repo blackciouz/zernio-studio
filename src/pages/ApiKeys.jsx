@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { PageHeader, DataTable, Button, Modal } from '../components/ui.jsx'
 import { apiKeys } from '../data/db.js'
 
+import { useToast } from '../hooks/useToast'
 export default function ApiKeys() {
   const [list, setList] = useState(apiKeys)
   const [creating, setCreating] = useState(false)
@@ -11,6 +12,7 @@ export default function ApiKeys() {
   const [newKey, setNewKey] = useState(null)
   const [copied, setCopied] = useState(false)
   const [reveal, setReveal] = useState(false)
+  const notify = useToast()
 
   const handleCreate = () => {
     if (!name.trim()) return
@@ -20,6 +22,7 @@ export default function ApiKeys() {
     setReveal(true)
     setCreating(false)
     setName('')
+    notify('Clé API créée')
   }
 
   return (

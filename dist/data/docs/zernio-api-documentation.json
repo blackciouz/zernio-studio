@@ -1,0 +1,5 @@
+{
+  "slug": "zernio-api-documentation",
+  "title": "Zernio API Documentation",
+  "content": "# Zernio API Documentation\n\nThis document contains the guides and platform documentation for the Zernio API.\n\nThe API reference (one page per endpoint) is not inlined here: read the full OpenAPI spec at https://zernio.com/openapi.json, or a single endpoint's page from the list in https://docs.zernio.com/llms.txt."
+}
